@@ -9,6 +9,16 @@ export default function Home() {
   const [selectedTip, setSelectedTip] = useState<number>(0);
   const [customTip, setCustomTip] = useState<string>('');
   const tipPercentages = [5, 10, 15, 25, 50];
+
+  // reset helper + disabled state for the button
+  const isResetDisabled =
+    bill === '' && people === '' && selectedTip === 0 && customTip === '';
+  const resetAll = () => {
+    setBill('');
+    setPeople('');
+    setSelectedTip(0);
+    setCustomTip('');
+  };
   const billNum = parseFloat(bill) || 0;
   const peopleNum = parseFloat(people) || 0;const tipPercent = selectedTip !== 0 ? selectedTip : (parseFloat(customTip) || 0);
   const tipTotal = billNum * (tipPercent / 100);
@@ -32,7 +42,7 @@ export default function Home() {
                 md:gap-8 md:grid-cols-2 w-full max-w-md md:max-w-4xl h-auto">
 
     <div className="flex-1">
-      <label htmlFor="bill" className="text-[#5e7a7d] text-sm font-semibold">
+      <label htmlFor="bill" className="text-[#004d4d] text-sm font-semibold">
         Bill
       </label>
       <div className="relative flex items-center w-full bg-[#f3f9fa] rounded-md border-2 border-transparent focus-within:border-[#26c0ab]">
@@ -59,7 +69,7 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col gap-3 mt-4">
-        <label htmlFor="bill" className="text-[#5e7a7d] text-sm font-semibold ">
+        <label htmlFor="bill" className="text-[#004d4d] text-sm font-semibold ">
           Select Tip %
         </label>
         <div className = "grid grid-cols-3 gap-4 text-center">
@@ -72,7 +82,7 @@ export default function Home() {
                 setCustomTip('');
               }}
               className={`text-2xl font-bold rounded-md p-3 flex items-center justify-center ${
-                selectedTip === tip ? 'bg-[#26c0ab] text-[#00494d]' : 'bg-[#004d4d] text-white'
+                selectedTip === tip ? 'bg-[#26c0ab] text-[#004d4d]' : 'bg-[#004d4d] text-white'
               }`}
             >
               {tip}%
@@ -99,7 +109,7 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col gap-3 mt-4">
-        <label htmlFor= "people" className= "text-[#5e7a7d] text-sm font-semibold "> 
+        <label htmlFor= "people" className= "text-[#004d4d] text-sm font-semibold "> 
           Number of People
         </label>
         <div className="relative flex items-center w-full bg-[#f3f9fa] rounded-md border-2 border-transparent focus-within:border-[#26c0ab]">
@@ -127,15 +137,15 @@ export default function Home() {
       </div>
     </div>
 
-    <div className="flex-1 bg-[#00494d] rounded-xl p-6 md:p-8  mt-4 md:mt-0">
-      <div className= "flex flex-col gap-10">
+    <div className="flex-1 bg-[#00494d] rounded-xl p-6 md:p-8 mt-4 md:mt-0 flex flex-col">
+      <div className= "flex flex-col gap-10 flex-1">
         
       <div className= "flex justify-between items-center">
       <div>
       <div className="text-white font-bold">Tip Amount </div>
-      <div className="text-[#5e7a7a] font-bold">/ person</div>
+      <div className="text-[#7a9999] font-bold text-sm">/ person</div>
       </div>
-      <div className="text-[#7a9999] font-bold text-4xl" aria-live="polite">
+      <div className="text-[#26b5a3] font-bold text-4xl" aria-live="polite">
         {formatCurrency(tipPerPerson)}
       </div>
       </div>
@@ -143,12 +153,26 @@ export default function Home() {
       <div className= "flex justify-between items-center"> 
       <div> 
       <div className="text-white font-bold ">Total</div>
-      <div className="text-[#5e7a7a] font-bold">/ person</div>
+      <div className="text-[#7a9999] font-bold text-sm">/ person</div>
       </div>
-      <div className="text-[#7a9999] font-bold  text-4xl" aria-live="polite">
+      <div className="text-[#26b5a3] font-bold  text-4xl" aria-live="polite">
         {formatCurrency(totalPerPerson)}
       </div>
       </div>
+    </div>
+    <div className="mt-auto">
+    <button
+      type="button"
+      onClick={resetAll}
+      disabled={isResetDisabled}
+      className={`w-full rounded-md py-3 font-bold ${
+        isResetDisabled
+          ? 'bg-[#0d686d] text-[#025A5E] cursor-not-allowed'
+          : 'bg-[#26b5a3] text-[#00494d]'
+      }`}
+    >
+    RESET
+    </button>
     </div>
     </div> 
 
