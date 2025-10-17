@@ -27,19 +27,19 @@ export default function Home() {
   const formatCurrency = (n: number) => `$${n.toFixed(2)}`;
 
   return (
-     <div className="min-h-screen grid place-items-center bg-[#c5e4e7] px-6 sm:px-12">
-  <Image
-    src="/images/logo.svg"
-    alt="Logo"
-    width={87}
-    height={54}
-    className="mb-12 w-24 sm:w-28 md:w-[87px] h-auto"
-  />
+  <div className="min-h-screen grid  justify-center place-items-center  bg-[#c5e4e7] px-6 sm:px-12">
+    <Image
+      src="/images/logo.svg"
+      alt="Logo"
+      width={87}
+      height={54}
+      className="-mb-10 w-24 sm:w-28 md:w-[87px] h-auto"
+    />
 
     
 
   <div className="flex flex-col md:flex-row gap-6 bg-white rounded-2xl p-6 md:p-8 shadow-[0_32px_43px_rgba(79,166,175,0.2)] 
-                md:gap-8 md:grid-cols-2 w-full max-w-md md:max-w-4xl h-auto">
+                md:gap-8 md:grid-cols-2 w-full max-w-none md:max-w-4xl h-auto">
 
     <div className="flex-1">
       <label htmlFor="bill" className="text-[#004d4d] text-sm font-semibold">
