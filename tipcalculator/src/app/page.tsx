@@ -10,7 +10,6 @@ export default function Home() {
   const [customTip, setCustomTip] = useState<string>('');
   const tipPercentages = [5, 10, 15, 25, 50];
 
-  // reset helper + disabled state for the button
   const isResetDisabled =
     bill === '' && people === '' && selectedTip === 0 && customTip === '';
   const resetAll = () => {
@@ -35,8 +34,6 @@ export default function Home() {
       height={54}
       className="-mb-10 w-24 sm:w-28 md:w-[87px] h-auto"
     />
-
-    
 
   <div className="flex flex-col md:flex-row gap-6 bg-white rounded-2xl p-6 md:p-8 shadow-[0_32px_43px_rgba(79,166,175,0.2)] 
                 md:gap-8 md:grid-cols-2 w-full max-w-none md:max-w-4xl h-auto">
